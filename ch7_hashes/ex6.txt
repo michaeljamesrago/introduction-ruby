@@ -1,0 +1,11 @@
+Chapter 7 exercise 6
+Given the following code...
+
+    x = "hi there"
+    my_hash = {x: "some value"}
+    my_hash2 = {x => "some value"}
+
+What's the difference between the two hashes that were created?
+
+A: In my_hash, the key is a symbol. In my_hash2, the key is the variable x which
+evaluates to the string "hi there".
