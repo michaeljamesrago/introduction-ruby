@@ -1,0 +1,6 @@
+Chapter 6 exercise 3
+How do you return the word "example" from the following array?
+
+    arr = [["test", "hello", "world"],["example", "mem"]]
+
+A: arr[1][0] or arr.last[0] or arr.last.first or arr.last.shift (mutating).

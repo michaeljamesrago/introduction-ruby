@@ -1,0 +1,29 @@
+Chapter 6 exercise 6
+You run the following code...
+
+    names = ['bob', 'joe', 'susan', 'margaret']
+    names['margaret'] = 'jody'
+    
+...and get the following error message:
+
+TypeError: no implicit conversion of String into Integer
+  from (irb):2:in `[]='
+  from (irb):2
+  from /Users/username/.rvm/rubies/ruby-2.0.0-p353/bin/irb:12:in `<main>'
+  
+What is the problem and how can it be fixed?
+
+names['margaret'] doesn't refer to a member of the names array. 'margaret' is 
+not an index. names.index('margaret') will return the index of the first 
+instance of 'margaret' in the array, so one way to fix this would be
+
+    names[names.index('margaret')] = "jody"
+
+or
+
+    names[names.find_index('margaret')] = "jody"
+    
+Of course, if you know the index of 'margaret' in the array you could always 
+just code
+
+    names[3] = 'jody'
