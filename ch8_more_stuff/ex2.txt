@@ -1,0 +1,11 @@
+Chapter 8 exercise 2
+What will the following program print to the screen? What will it return?
+
+    def execute(&block)
+      block
+    end
+
+    execute { puts "Hello from inside the execute method!" }
+
+A: .call method was never called, so no output. Return value is block wrapped
+in a proc object.

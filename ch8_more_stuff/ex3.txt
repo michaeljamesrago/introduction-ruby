@@ -1,0 +1,6 @@
+Chapter 8 exercise 3
+What is exception handling and what problem does it solve?
+
+A: If an exception is thrown and not handled, execution of the program stops 
+completely. If the programmer can anticipate exceptions and handle them, the 
+program can continue executing even after exceptions occur.
