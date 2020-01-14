@@ -4,7 +4,7 @@ Write a program that prints a greeting message. This program should contain a me
 =end
 
 def greeting(name)
-    "hello #{name}"
+  "hello #{name}"
 end
 
 puts greeting("Keith")

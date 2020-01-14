@@ -4,7 +4,7 @@ Write a program that includes a method called multiply that takes two arguments 
 =end
 
 def multiply(a,b)
-    a * b
+  a * b
 end
 
 puts multiply(5,6)

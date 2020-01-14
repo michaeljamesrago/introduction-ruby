@@ -4,8 +4,8 @@ Edit the method definition in exercise #4 so that it does print words on the scr
 =end
 
 def scream(words)
-    words = words + "!!!!"
-    puts words
+  words = words + "!!!!"
+  puts words
 end
 
 scream("Yippeee")

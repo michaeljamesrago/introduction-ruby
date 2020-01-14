@@ -6,6 +6,6 @@ Write a while loop that takes input from the user, performs an action, and only 
 x = ""
 
 while x != "STOP" do
-    puts "Type STOP"
-    x = gets.chomp
+  puts "Type STOP"
+  x = gets.chomp
 end

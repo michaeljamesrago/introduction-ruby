@@ -16,12 +16,12 @@ words =  ['demo', 'none', 'tied', 'evil', 'dome', 'mode', 'live',
 anagrams = {}
 
 words.each do |word|
-    key = word.split("").sort.join
-    if anagrams.has_key?(key)
-        anagrams[key].push(word)
-    else
-        anagrams[key] = [word]
-    end
+  key = word.split("").sort.join
+  if anagrams.has_key?(key)
+    anagrams[key].push(word)
+  else
+    anagrams[key] = [word]
+  end
 end
 
 p anagrams.values

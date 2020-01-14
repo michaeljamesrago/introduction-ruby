@@ -1,0 +1,10 @@
+Chapter 9 exercise 10
+Can hash values be arrays? Can you have an array of hashes? (give examples).
+
+A: Yes, hash values can be arrays. e.g.
+
+    h = { arr1: [1, 2, 3] }
+    
+Yes, you can have an array of hashes. e.g.
+
+    [ { a: 1, b: 2 }, { c: 3, d: 4 } ]

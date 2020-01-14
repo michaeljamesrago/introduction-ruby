@@ -1,0 +1,7 @@
+Chapter 9 exercise 11
+Look at several Rails/Ruby online documentation sources and say which one you 
+like best and why.
+
+A: So far, I like the documentation at https://ruby-doc.org/ because it is 
+straightforward and easy to read and navigate. I have not had any trouble 
+finding what I need from that source.
