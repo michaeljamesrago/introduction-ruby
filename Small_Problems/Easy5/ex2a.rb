@@ -8,6 +8,7 @@
 #   hours %= 24
 # end
 # return a string with hours, a colon, and minutes concatenated
+=begin
 def time_of_day(int)
   negative = int >= 0 ? false : true
   hours, minutes = int.abs.divmod(60)
@@ -17,6 +18,13 @@ def time_of_day(int)
     minutes = 60 - minutes
   end
   format("%02d", hours) + ':' + format("%02d", minutes)
+end
+=end
+def time_of_day(int)
+  hrs, mins = int.divmod(60)
+  hours = (hrs % 24).to_s
+  minutes = mins.to_s
+  format("%02d", hours)+':'+format("%02d", minutes)
 end
 
 puts time_of_day(0) == "00:00"
