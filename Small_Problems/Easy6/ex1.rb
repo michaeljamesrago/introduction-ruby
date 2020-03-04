@@ -8,13 +8,15 @@ require 'pry'
 DEGREE = "\xC2\xB0"
 def dms(float)
   float %= 360
-  degrees, fraction = float.divmod(1)
-  minutes, fraction_of_minute = (fraction * 60).divmod(1)
-  seconds = (fraction_of_minute * 60).round(2)
-  binding.pry
-  "#{degrees}#{DEGREE}#{format('%02d', minutes)}'#{format('%02d', seconds)}\""
+  degrees, fraction_of_degree = float.divmod(1)
+  minutes = fraction_of_degree * 60
+  seconds = (minutes % 1) * 60
+  puts "#{degrees}#{DEGREE}#{format('%02d', minutes)}'#{format('%02d', seconds)}\""
 end
-#puts dms(705.2575)
+
+def dms(float)
+  float %= 360
+  minutes
 
 puts dms(30) == %(30°00'00")
 puts dms(76.73) == %(76°43'48")
