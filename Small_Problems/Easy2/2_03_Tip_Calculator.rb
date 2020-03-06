@@ -1,4 +1,6 @@
-puts 'Please enter the bill total:'
+#Create a simple tip calculator. The program should prompt for a bill amount
+#and a tip rate. The program must compute the tip and then display both the tip
+#and the total amount of the bill.puts 'Please enter the bill total:'
 bill = gets.chomp.to_f
 puts 'Please enter the tip percentage:'
 tip_percentage = gets.chomp.to_f / 100
