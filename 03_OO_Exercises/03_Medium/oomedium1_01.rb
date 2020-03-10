@@ -2,7 +2,7 @@ class Machine
   def initialize
     @switch = :off
   end
-  
+
   def start
     puts "start method executing"
     flip_switch(:on)

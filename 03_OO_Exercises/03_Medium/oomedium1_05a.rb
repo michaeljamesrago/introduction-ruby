@@ -86,25 +86,36 @@ class Minilang
   end
 end
 
-Minilang.new('-3 PUSH 5 XSUB PRINT').eval
-Minilang.new('5 PUSH POP POP PRINT').eval
+Minilang.new('-3 PUSH 5 XSUB PRINT').eval # InvalidTokenError
+Minilang.new('5 PUSH POP POP PRINT').eval #EmptyStackError
 CENTIGRADE_TO_FAHRENHEIT =
   '5 PUSH %<degrees_c>d PUSH 9 MULT DIV PUSH 32 ADD PRINT'
 FAHRENHEIT_TO_CENTIGRADE = '9 PUSH 5 PUSH 32 PUSH %<degrees_f>d SUB MULT DIV PRINT'
 AREA_OF_A_RECTANGLE = '%<width>d PUSH %<height>d MULT PRINT'
 c_to_f = Minilang.new(CENTIGRADE_TO_FAHRENHEIT)
 c_to_f.eval(degrees_c: 100)
+# => 212
 c_to_f.eval(degrees_c: 0)
+# => 32
 c_to_f.eval(degrees_c: -40)
+# => -40
 c_to_f.eval
+# => WrongNumberOfArgumentsError
 f_to_c = Minilang.new(FAHRENHEIT_TO_CENTIGRADE)
 f_to_c.eval(degrees_f: 0)
+# => -18
 f_to_c.eval(degrees_f: 32)
+# => 0
 f_to_c.eval(degrees_f: 100)
+# => 37
 f_to_c.eval(degrees_f: 212)
+# => 100
 f_to_c.eval(degrees_f: 50, humidity: 30)
-
+# => WrongNumberOfArgumentsError
 area_calculator = Minilang.new(AREA_OF_A_RECTANGLE)
 area_calculator.eval(width: 15, height: 21)
+# => 315
 area_calculator.eval(width: 15)
+# => WrongNumberOfArgumentsError
 area_calculator.eval
+# => WrongNumberOfArgumentsError

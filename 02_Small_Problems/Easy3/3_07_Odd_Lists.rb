@@ -1,7 +1,7 @@
-# Write a method that returns an Array that contains every other element of an
-# Array that is passed in as an argument. The values in the returned list
-# should be those values that are in the 1st, 3rd, 5th, and so on elements of
-# the argument Array.
+#Write a method that returns an Array that contains every other element
+#of an Array that is passed in as an argument. The values in the
+#returned list should be those values that are in the 1st, 3rd, 5th, and
+#so on elements of the argument Array.
 def oddities1(arr)
   i = 0
   arr2 = []
@@ -19,12 +19,13 @@ def oddities2(arr)
 end
 
 def oddities3(arr)
+  arr2 = arr.clone
   i = 1
   while arr[i]
     arr[i] = nil
     i+=2
   end
-  arr.compact
+  arr2.compact
 end
 
 puts oddities1(['first', 'second', 'third', 'fourth', 'fifth', 'sixth']).inspect
