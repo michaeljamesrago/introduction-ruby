@@ -5,8 +5,9 @@
 #
 # You may assume that the number passed in is an integer greater than 1.
 def multisum(number)
-  a = (1..number).select{ |num| num % 3 == 0 || num % 5 == 0 }
-  a.inject{ |acc, elem| acc + elem }
+  sum = 0
+  1.upto(number){ |i| sum += i if i % 3 == 0 || i % 5 == 0 }
+  sum
 end
 
 puts multisum(3) == 3

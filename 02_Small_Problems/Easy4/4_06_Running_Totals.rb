@@ -3,12 +3,7 @@
 # original Array.
 def running_total(arr)
   acc = 0
-  arr2 = []
-  arr.each do |n|
-    acc += n
-    arr2 << acc
-  end
-  arr2
+  arr.map{ |elem| acc = elem + acc }
 end
 
 puts running_total([2, 5, 13]) == [2, 7, 20]
