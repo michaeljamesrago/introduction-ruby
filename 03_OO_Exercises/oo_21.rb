@@ -6,23 +6,6 @@ class Player
     @name = name
   end
 
-  def hit_or_stay
-    answer = nil
-    puts "Do you want another card? (y/n)"
-    loop do
-      answer = gets.chomp.lstrip.chr.downcase
-      break if ['y', 'n'].include?(answer)
-      puts "Please answer 'y' or 'n'"
-      puts "Do you want another card?"
-    end
-    puts ""
-    return :hit if answer == 'y'
-  end
-
-  def busted?
-    total > 21
-  end
-
   def display_hand
     puts "#{@name} has:"
     @hand.each { |card| puts "\t#{card}" }
@@ -38,6 +21,22 @@ class Player
       ace_count -= 1
     end
     total_value
+  end
+
+  def hit_or_stay
+    answer = nil
+    puts "Do you want another card? (y/n)"
+    loop do
+      answer = gets.chomp.lstrip.chr.downcase
+      break if ['y', 'n'].include?(answer)
+      puts "Please answer 'y' or 'n'"
+      puts "Do you want another card?"
+    end
+    return :hit if answer == 'y'
+  end
+
+  def busted?
+    total > 21
   end
 
   protected
@@ -58,9 +57,12 @@ class Dealer < Player
     @show_all = false
   end
 
-  def deal(player)
-    player.clear_hand
-    2.times { |_| hit(player) }
+  def deal(*players)
+    self.show_all = false
+    players.each do |player|
+      player.clear_hand
+      2.times { |_| hit(player) }
+    end
   end
 
   def hit_or_stay
@@ -73,8 +75,11 @@ class Dealer < Player
   end
 
   def display_hand
-    @show_all ? super : puts("#{@name} is showing \n\t#{@hand[0]}", "")
+    @show_all ? super : puts("#{@name} is showing:\n\t#{@hand[0]}", "")
   end
+
+  private
+  attr_writer :show_all
 end
 
 class Deck
@@ -92,10 +97,6 @@ class Deck
       card = @cards.shift
     end
     card
-  end
-
-  def shuffle
-    @cards.shuffle
   end
 
   private
@@ -135,11 +136,10 @@ class Game
   def start
     @player.name = ask_name
     loop do
-      @dealer.deal(@player)
-      @dealer.deal(@dealer)
+      @dealer.deal(@player, @dealer)
       display_game
-      take_turn(@player)
-      take_turn(@dealer) unless @player.busted?
+      give_turn(@player)
+      give_turn(@dealer) unless @player.busted?
       display_game
       display_result
       break unless play_again?
@@ -150,7 +150,7 @@ class Game
   private
 
   def display_game
-    system("cls")
+    clear_screen
     banner
     @dealer.display_hand
     @player.display_hand
@@ -165,14 +165,14 @@ class Game
     puts "*     *    * * *  *    *  **   *     *     *    * *  ** *      *"
     puts "*     *    *   *  **** *   *   *     *      ****  *   * ****   *"
     puts "*                                                              *"
-    puts "****************************************************************"
+    puts "****************************************************************", ""
   end
 
   def ask_name
     name = nil
-    system('cls')
+    clear_screen
     banner
-    puts "", "Please enter your name:"
+    puts "Please enter your name:"
     loop do
       name = gets.chomp.strip
       break unless name.downcase == "dealer"
@@ -182,7 +182,7 @@ class Game
     name
   end
 
-  def take_turn(player)
+  def give_turn(player)
     while player.hit_or_stay == :hit
       @dealer.hit(player)
       display_game unless player.class == Dealer
@@ -196,7 +196,7 @@ class Game
     elsif @dealer.busted?
       puts "The dealer has busted.", ""
     end
-    puts !!who_won ? "#{who_won.name} wins.\n" : "It's a push.\n"
+    puts !!who_won ? "#{who_won.name} wins.\n\n" : "It's a push.\n\n"
   end
 
   def who_won
@@ -227,6 +227,10 @@ class Game
 
   def thanks_message
     puts "Thank you for playing Twenty One."
+  end
+
+  def clear_screen
+    system('cls')
   end
 end
 
