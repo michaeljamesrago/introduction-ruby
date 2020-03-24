@@ -1,18 +1,13 @@
-require 'pry'
-# Input string
-# Break string into an array of characters
-# Initialize new string
-# Call #each on character array, and add that character to the new string if
-# the last character in the new string is not equal to it.
+# Write a method that takes a string argument and returns a new string that
+# contains the value of the original string with all consecutive duplicate
+# characters collapsed into a single character. You may not use String#squeeze
+# or String#squeeze!.
 
 def crunch(str)
   crunched = ''
   str.chars.each{ |c| crunched << c unless crunched.end_with?(c) }
   crunched
 end
-
-
-
 
 puts crunch('ddaaiillyy ddoouubbllee') == 'daily double'
 puts crunch('4444abcabccba') == '4abcabcba'

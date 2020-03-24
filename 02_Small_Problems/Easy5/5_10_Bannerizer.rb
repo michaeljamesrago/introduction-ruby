@@ -1,29 +1,4 @@
-require 'pry'
-# Input: string
-# Get length of string len
-# Get width of banner text len + 2
-# Top Border
-#   Construct string '+' + ('-' * banner width) + '+'
-# Blank line
-#   Construct string '|' + (' ' * banner width) + '|'
-# Banner text
-#   Construct string '|' + (string.center(banner width) + '|')
-# Another Blank Line
-# Bottom Border
-#   Same as top border
-
-# wrapper method
-#   split input string into words.
-#   initialize empty array lines
-#   while words is not empty
-#     initialize empty string line
-#     while line.length < 76
-#       if adding words[0] to line would not result in line having length
-#       greater than or equal to 76, then add words.shift to line
-#       add space to line if line length < 76
-#     lines << line
-#    return lines
-
+# Write a method that will take a short line of text, and print it within a box.
 def wrapper(str)
   words = str.split
   lines = []
@@ -55,7 +30,6 @@ def wrapper_dev(str)
   lines
 end
 
-
 long_str = "This is a fairly straight forward solution To simplify matters, we start out by setting horizontal_rule and empty_line to appropriate values for the top and bottom 2 lines of the box. The expression '-' * (message.size + 2) simply creates a string of message.size + 2 hyphens; combined with the + at the beginning and end of the the string, this is just wide enough to draw the horizontal lines while leaving room for one blank on either side of the message."
 
 puts wrapper(long_str)
@@ -70,10 +44,6 @@ def print_in_box(str)
   banner_text.each{|line| puts '|' + line.center(banner_width) + '|'}
   puts blank_line, top_bottom_border
 end
-
-
-
-
 
 print_in_box "Fourscore and seven years ago"
 print_in_box ""

@@ -1,22 +1,6 @@
-# Write a method that takes a string with one or more space separated words and
-# returns a hash that shows the number of words of different sizes.
-#
-# Words consist of any string of characters that do not include a space.
-#
-# Examples
-#
-# word_sizes('Four score and seven.') == { 3 => 1, 4 => 1, 5 => 1, 6 => 1 }
-# word_sizes('Hey diddle diddle, the cat and the fiddle!') == { 3 => 5, 6 => 1,
-# 7 #=> 2 }
-# word_sizes("What's up doc?") == { 6 => 1, 2 => 1, 4 => 1 }
-# word_sizes('') == {}
-# Input: string with one or more words separated by spaces.
-# Split string into separate words
-# Get new array of lengths of each word.
-# Create new hash
-# Iterate through lengths array
-#   Add array elements as keys to hash and set their values to the #counts of
-#   the element in the array.
+# Modify the word_sizes method from the previous exercise to exclude 
+# non-letters when determining word size. For instance, the length of "it's" is
+# 3, not 4.
 LETTERS = ('a'..'z').to_a + ('A'..'Z').to_a
 
 def my_word_sizes(str)

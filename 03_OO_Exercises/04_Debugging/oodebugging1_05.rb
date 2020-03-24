@@ -16,7 +16,7 @@ class File
   end
 
   def to_s
-    "#{name}.#{FORMAT}"
+    "#{name}.#{self.class::FORMAT}"
   end
 end
 
@@ -35,7 +35,7 @@ end
 # Test
 
 blog_post = MarkdownFile.new('Adventures_in_OOP_Land')
-blog_post.write('Content will be added soon!'.bytes)
+blog_post.write('Content will be added soon!')
 
 copy_of_blog_post = blog_post.copy('Same_Adventures_in_OOP_Land')
 
@@ -43,3 +43,4 @@ puts copy_of_blog_post.is_a? MarkdownFile     # true
 puts copy_of_blog_post.read == blog_post.read # true
 
 puts blog_post
+puts blog_post.read

@@ -1,13 +1,12 @@
-# Determine whether integer is positive/0 or negative, save that info for later
-# Read absolute value of input into integer min
-# hours, minutes = absolute value of min divmod 60
-# if given value was negative:
-#   hours = 23 - hours % 24
-#   minutes = 60 - minutes
-# else if min is positive or zero
-#   hours %= 24
-# end
-# return a string with hours, a colon, and minutes concatenated
+# The time of day can be represented as the number of minutes before or after
+# midnight. If the number of minutes is positive, the time is after midnight. If
+# the number of minutes is negative, the time is before midnight.
+#
+# Write a method that takes a time using this minute-based format and returns
+# the time of day in 24 hour format (hh:mm). Your method should work with
+# any integer input.
+#
+#You may not use ruby's Date and Time classes.
 def time_of_day(int)
   negative = int >= 0 ? false : true
   hours, minutes = int.abs.divmod(60)
